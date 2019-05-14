@@ -18,5 +18,11 @@ public interface JedisClient {
     Long hdel(String key, String... field);
     Boolean hexists(String key, String field);
     List<String> hvals(String key);
-    Long del(String key);
+    long del(String key);
+    long sadd(String key,String value);
+    long srem(String key,String value);
+    long scard(String key);
+    boolean sismember(String key,String value);
+    long lpush(String key,String value);
+    List<String> brpop(int timeout,String key);
 }

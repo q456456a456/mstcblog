@@ -14,12 +14,76 @@ public class Blog {
     private String imageUrl;//博文图片
     private Date createTime;//博文发布时间
     private String keyWord;//博文关键词
-    private int status;//博文的状态标志，是否可见，或者用来表示是否删除的状态(0代表可见，1代表被删除不可见)
+    private int status;//博文的私密标志，1表示私密，0表示公开可见
     private int flag;//博文类型标志，比如1代表JAVA开发，2代表C++，3代表机器学习等等
     private int likeCount;//博文点赞人数
     private int dislikeCount;//博文点踩人数
     private int isTop;//博文是否置顶的标志（0代表不置顶，1代表置顶）
+    private double hotScore;//博文的热度分数
 
+
+    private String nickname;//发帖人的昵称
+    private String headUrl;//发帖人的头像
+    private String commentCount;//博客的评论数
+    private String collectionCount;//博客的收藏数
+    private String createTimeStr;//博客创建时间
+    private int viewCount;//博客浏览量
+    private int entityType;//博客的标志
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getHeadUrl() {
+        return headUrl;
+    }
+
+    public void setHeadUrl(String headUrl) {
+        this.headUrl = headUrl;
+    }
+
+    public String getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(String commentCount) {
+        this.commentCount = commentCount;
+    }
+
+    public String getCollectionCount() {
+        return collectionCount;
+    }
+
+    public void setCollectionCount(String collectionCount) {
+        this.collectionCount = collectionCount;
+    }
+
+    public String getCreateTimeStr() {
+        return createTimeStr;
+    }
+
+    public void setCreateTimeStr(String createTimeStr) {
+        this.createTimeStr = createTimeStr;
+    }
+
+    public int getViewCount() {
+        return viewCount;
+    }
+
+    public void setViewCount(int viewCount) {
+        this.viewCount = viewCount;
+    }
+
+    public double getHotScore() {
+        return hotScore;
+    }
+    public void setHotScore(double hotScore) {
+        this.hotScore = hotScore;
+    }
     public int getId() {
         return id;
     }
@@ -122,5 +186,13 @@ public class Blog {
 
     public void setIsTop(int isTop) {
         this.isTop = isTop;
+    }
+
+    public int getEntityType() {
+        return entityType;
+    }
+
+    public void setEntityType(int entityType) {
+        this.entityType = entityType;
     }
 }

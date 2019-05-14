@@ -26,6 +26,19 @@ public class User {
     private String label;//个人标签
     private String token;//每个人固定的token
     private int follownCount;//粉丝数量
+    private int flag;//0代表普通用户，1代表超级管理员，2代表普通管理员
+    private double rankScore;//用户贡献值，经验值
+
+
+    private double scoreRanking;//用户贡献值排名
+
+    public double getScoreRanking() {
+        return scoreRanking;
+    }
+
+    public void setScoreRanking(double scoreRanking) {
+        this.scoreRanking = scoreRanking;
+    }
 
     public int getId() {
         return id;
@@ -185,5 +198,21 @@ public class User {
 
     public void setFollownCount(int follownCount) {
         this.follownCount = follownCount;
+    }
+
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
+    }
+
+    public double getRankScore() {
+        return rankScore;
+    }
+
+    public void setRankScore(double rankScore) {
+        this.rankScore = rankScore;
     }
 }

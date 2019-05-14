@@ -26,7 +26,7 @@ public class JedisClientPool implements JedisClient ,InitializingBean {
     public void afterPropertiesSet() throws Exception {
         JedisPoolConfig config = new JedisPoolConfig();
         config.setMaxTotal(1000);//设置最大连接池数量
-        jedisPool = new JedisPool("redis://localhost:6379/11");
+        jedisPool = new JedisPool("redis://localhost:6379/10");
     }
 
     public JedisPool getJedisPool() {
@@ -193,10 +193,9 @@ public class JedisClientPool implements JedisClient ,InitializingBean {
     @Override
     public Boolean hexists(String key, String field) {
         Jedis jedis=null;
-        Boolean result=null;
         try{
             jedis = jedisPool.getResource();
-            result = jedis.hexists(key, field);
+            return jedis.hexists(key, field);
         }catch (Exception e){
             logger.error("redis的hexists操作发生异常"+e.getMessage());
         }finally {
@@ -204,7 +203,7 @@ public class JedisClientPool implements JedisClient ,InitializingBean {
                 jedis.close();
             }
         }
-        return result;
+        return false;
     }
 
     @Override
@@ -225,7 +224,7 @@ public class JedisClientPool implements JedisClient ,InitializingBean {
     }
 
     @Override
-    public Long del(String key) {
+    public long del(String key) {
         Jedis jedis=null;
         Long result=null;
         try{
@@ -239,6 +238,90 @@ public class JedisClientPool implements JedisClient ,InitializingBean {
             }
         }
         return result;
+    }
+
+    @Override
+    public long sadd(String key,String value){
+        Jedis jedis =null;
+        try{
+            jedis = jedisPool.getResource();
+            return jedis.sadd(key,value);
+        }catch (Exception e ){
+            logger.error("发生异常"+e.getMessage());
+        }finally {
+            jedis.close();
+        }
+        return 0;
+    }
+
+    @Override
+    public long srem(String key,String value){
+        Jedis jedis =null;
+        try{
+            jedis = jedisPool.getResource();
+            return jedis.srem(key,value);
+        }catch (Exception e ){
+            logger.error("发生异常"+e.getMessage());
+        }finally {
+            jedis.close();
+        }
+        return 0;
+    }
+
+    @Override
+    public long scard(String key){
+        Jedis jedis =null;
+        try{
+            jedis = jedisPool.getResource();
+            return jedis.scard(key);
+        }catch (Exception e ){
+            logger.error("发生异常"+e.getMessage());
+        }finally {
+            jedis.close();
+        }
+        return 0;
+    }
+
+    @Override
+    public boolean sismember(String key,String value){
+        Jedis jedis =null;
+        try{
+            jedis = jedisPool.getResource();
+            return jedis.sismember(key,value);
+        }catch (Exception e ){
+            logger.error("发生异常"+e.getMessage());
+        }finally {
+            jedis.close();
+        }
+        return false;
+    }
+
+    @Override
+    public long lpush(String key,String value){
+        Jedis jedis =null;
+        try{
+            jedis = jedisPool.getResource();
+            return jedis.lpush(key,value);
+        }catch (Exception e){
+            logger.error("发生异常"+e.getMessage());
+        }finally{
+            jedis.close();
+        }
+        return 0;
+    }
+
+    @Override
+    public List<String> brpop(int timeout,String key){
+        Jedis jedis = null;
+        try{
+            jedis = jedisPool.getResource();
+            return jedis.brpop(timeout,key);
+        }catch (Exception e){
+
+        }finally {
+            jedis.close();
+        }
+        return null;
     }
 
 }

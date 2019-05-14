@@ -10,13 +10,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 /**
  * Created by lk on 2018/5/1.
  */
-//配置拦截器
 @SpringBootConfiguration
 public class MstcblogConfiguration extends WebMvcConfigurerAdapter {
     @Autowired
     PassportInterceptor passportInterceptor;
 
 
+    //配置拦截器
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(passportInterceptor);//在系统初始化时把拦截器加入到整个链路上

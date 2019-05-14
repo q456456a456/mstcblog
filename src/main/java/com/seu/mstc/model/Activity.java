@@ -20,6 +20,14 @@ public class Activity {
     private int likeCount;//活动点赞人数
     private int dislikeCount;//活动点踩人数
 
+    private String nickname;//发帖人的昵称
+    private String headUrl;//发帖人的头像
+    private String commentCount;//技术帖的评论数
+    private String collectionCount;//技术帖的收藏数
+    private String createTimeStr;//技术帖创建时间
+    private int viewCount;//技术帖浏览量
+    private int entityType;//活动的标志
+
     public int getId() {
         return id;
     }
@@ -122,5 +130,61 @@ public class Activity {
 
     public void setDislikeCount(int dislikeCount) {
         this.dislikeCount = dislikeCount;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getHeadUrl() {
+        return headUrl;
+    }
+
+    public void setHeadUrl(String headUrl) {
+        this.headUrl = headUrl;
+    }
+
+    public String getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(String commentCount) {
+        this.commentCount = commentCount;
+    }
+
+    public String getCollectionCount() {
+        return collectionCount;
+    }
+
+    public void setCollectionCount(String collectionCount) {
+        this.collectionCount = collectionCount;
+    }
+
+    public String getCreateTimeStr() {
+        return createTimeStr;
+    }
+
+    public void setCreateTimeStr(String createTimeStr) {
+        this.createTimeStr = createTimeStr;
+    }
+
+    public int getViewCount() {
+        return viewCount;
+    }
+
+    public void setViewCount(int viewCount) {
+        this.viewCount = viewCount;
+    }
+
+    public int getEntityType() {
+        return entityType;
+    }
+
+    public void setEntityType(int entityType) {
+        this.entityType = entityType;
     }
 }
